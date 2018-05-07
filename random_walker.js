@@ -1,5 +1,5 @@
 /*jslint browser:true, this:true */
-/*global createCanvas, width, height, stroke, background, point, int, random */
+/*global createCanvas, resizeCanvas, windowWidth, windowHeight, width, height, stroke, background, point, int, random */
 
 var w;
 
@@ -32,7 +32,7 @@ function Walker() {
 function setup() {
     "use strict";
 
-    createCanvas(640, 360);
+    createCanvas(windowWidth, windowHeight);
     w = new Walker();
     background(255);
 }
@@ -42,4 +42,13 @@ function draw() {
 
     w.step();
     w.display();
+}
+
+function windowResized() {
+    "use strict";
+
+    resizeCanvas(windowWidth, windowHeight);
+    background(255);
+    w.x = width / 2;
+    w.y = height / 2;
 }
